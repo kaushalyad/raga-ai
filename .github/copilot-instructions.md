@@ -1,0 +1,7 @@
+- [x] Project scaffolded with Vite React + TypeScript template.
+- [ ] Customize folder structure for scalability.
+- [ ] Install Redux, Firebase, and other dependencies.
+- [ ] Implement authentication, pages, and patient module.
+- [ ] Integrate service worker and notifications.
+- [ ] Ensure responsiveness and reusable components.
+- [ ] Update README.md with project details.
