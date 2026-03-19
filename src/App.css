@@ -162,6 +162,7 @@
 
 .mobile-drawer-head {
   display: none;
+  min-width: 330px;
 }
 
 .mobile-drawer-title {
@@ -377,7 +378,7 @@
      box-shadow: var(--shadow);
      transform: translateX(calc(100% + 12px));
      transition: transform 180ms ease;
-     z-index: 10;
+     z-index: 100;
      overflow: hidden;
      pointer-events: none;
    }
