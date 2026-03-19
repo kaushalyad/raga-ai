@@ -223,7 +223,10 @@
  .hamburger:active {
    transform: translateY(1px);
  }
-
+ .chip-row{
+   display: flex;
+   gap:5px;
+ }
  .hamburger-line {
    width: 18px;
    height: 2px;
@@ -344,7 +347,7 @@
    object-fit: contain;
    border-radius: 8px;
  }
-
+ 
  @media (max-width: 700px) {
    .page-header {
      flex-direction: column;
@@ -359,7 +362,7 @@
    .hamburger {
      display: inline-flex;
    }
-
+   
    .nav-menu {
      display: grid;
      text-align: center;
