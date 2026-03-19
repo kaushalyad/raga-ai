@@ -366,7 +366,7 @@
      top: calc(12px + env(safe-area-inset-top));
      right: calc(12px + env(safe-area-inset-right));
      height: calc(100svh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
-     width: min(360px, calc(100vw - 24px));
+     width: min(380px, calc(100vw - 20px));
      grid-template-rows: auto 1fr auto;
      align-items: stretch;
      gap: 14px;
