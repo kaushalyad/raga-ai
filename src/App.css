@@ -362,11 +362,12 @@
 
    .nav-menu {
      display: grid;
+     text-align: center;
      position: fixed;
      top: calc(12px + env(safe-area-inset-top));
      right: calc(12px + env(safe-area-inset-right));
      height: calc(100svh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
-     width: min(380px, calc(100vw - 20px));
+     width: min(400px, calc(100vw - 16px));
      grid-template-rows: auto 1fr auto;
      align-items: stretch;
      gap: 14px;
