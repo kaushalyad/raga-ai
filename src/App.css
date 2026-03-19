@@ -156,6 +156,44 @@
   display: block;
 }
 
+.mobile-backdrop {
+  display: none;
+}
+
+.mobile-drawer-head {
+  display: none;
+}
+
+.mobile-drawer-title {
+  font-size: 13px;
+  font-weight: 650;
+  color: rgba(248, 250, 252, 0.92);
+}
+
+.mobile-drawer-close {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid hsl(217 32% 25% / 0.55);
+  background: #ffffff0d;
+  color: rgba(248, 250, 252, 0.92);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.mobile-drawer-close:hover {
+  background: #ffffff14;
+  border-color: hsl(217 91% 60% / 0.40);
+}
+
+.mobile-drawer-close:active {
+  transform: translateY(1px);
+}
+
 .header-cta-primary:hover {
   filter: brightness(1.03);
 }
@@ -307,130 +345,6 @@
  }
 
  @media (max-width: 700px) {
-   .brand-logo {
-     width: 120px;
-     max-width: 120px;
-     height: 28px;
-   }
-
-   .brand-name,
-   .brand-subtitle {
-     max-width: 280px;
-   }
- }
-
- @media (max-width: 520px) {
-   .brand-logo {
-     width: 96px;
-     max-width: 96px;
-     height: 28px;
-   }
-
-   .brand-name,
-   .brand-subtitle {
-     max-width: 180px;
-   }
-
-   .brand-subtitle {
-     display: none;
-   }
- }
-
- .brand-mark {
-   width: 28px;
-   height: 28px;
-   border-radius: 10px;
-   background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 50%, #22c55e));
-   box-shadow: 0 12px 28px rgba(170, 59, 255, 0.20);
- }
-
- .main-content {
-   padding: 24px 16px;
-   background:
-     radial-gradient(1200px 500px at 20% -10%, rgba(170, 59, 255, 0.10), transparent 60%),
-     radial-gradient(1000px 400px at 90% 0%, rgba(170, 59, 255, 0.08), transparent 55%);
- }
-
- .stack {
-   display: flex;
-   flex-direction: column;
-   gap: 12px;
- }
-
- .grid-2 {
-   display: grid;
-   grid-template-columns: 1.2fr 0.8fr;
-   gap: 12px;
-   align-items: start;
- }
-
- @media (max-width: 900px) {
-   .grid-2 {
-     grid-template-columns: 1fr;
-   }
- }
-
- .page {
-   width: 100%;
-   max-width: 1100px;
-   margin: 0 auto;
-   min-width: 0;
- }
-
- .page-header {
-   display: flex;
-   align-items: flex-start;
-   justify-content: space-between;
-   gap: 16px;
-   text-align: left;
- }
-
- .page-header p {
-   margin-top: 6px;
-   color: var(--text);
- }
-
- .page-actions {
-   display: flex;
-   align-items: center;
-   justify-content: flex-end;
-   gap: 10px;
-   flex-wrap: wrap;
- }
-
- .chip-row {
-   display: inline-flex;
-   align-items: center;
-   gap: 8px;
-   padding: 6px;
-   border-radius: 14px;
-   border: 1px solid var(--border);
-   background: color-mix(in srgb, var(--bg) 92%, transparent);
- }
-
- .chip {
-   border: 1px solid transparent;
-   background: transparent;
-   color: var(--text);
-   padding: 8px 10px;
-   border-radius: 12px;
-   cursor: pointer;
-   font-size: 13px;
- }
-
- .chip:hover {
-   background: var(--accent-bg);
-   color: var(--text-h);
-   border-color: var(--accent-border);
- }
-
- .chip-active {
-   background: var(--accent-bg);
-   color: var(--text-h);
-   border-color: var(--accent-border);
- }
-
- @media (max-width: 700px) {
    .page-header {
      flex-direction: column;
      align-items: stretch;
@@ -446,22 +360,59 @@
    }
 
    .nav-menu {
-     display: none;
+     display: flex;
+     position: fixed;
+     top: 12px;
+     right: 12px;
+     height: calc(100vh - 24px);
+     width: min(360px, calc(100vw - 24px));
      flex-direction: column;
      align-items: stretch;
-     gap: 12px;
-     padding-top: 12px;
-     border-top: 1px solid var(--border);
+     gap: 14px;
+     padding: 16px;
+     background: linear-gradient(180deg, hsl(222 47% 11% / 0.96), hsl(222 47% 11% / 0.90));
+     border: 1px solid hsl(217 32% 25% / 0.55);
+     border-radius: 18px;
+     box-shadow: var(--shadow);
+     transform: translateX(calc(100% + 12px));
+     transition: transform 180ms ease;
+     z-index: 10;
+     overflow: auto;
+     pointer-events: none;
    }
 
    .nav-open .nav-menu {
+     transform: translateX(0);
+     pointer-events: auto;
+   }
+
+   .mobile-backdrop {
+     display: block;
+     position: fixed;
+     inset: 0;
+     background: rgba(2, 6, 23, 0.65);
+     opacity: 0;
+     pointer-events: none;
+     transition: opacity 160ms ease;
+     z-index: 9;
+   }
+
+   .mobile-backdrop-open {
+     opacity: 1;
+     pointer-events: auto;
+   }
+
+   .mobile-drawer-head {
      display: flex;
-     background: hsl(222 47% 11% / 0.75);
-     border: 1px solid hsl(217 32% 25% / 0.55);
-     border-radius: 18px;
-     padding: 12px;
-     margin-top: 10px;
-     box-shadow: var(--shadow);
+     align-items: center;
+     justify-content: space-between;
+     gap: 12px;
+     position: sticky;
+     top: 0;
+     background: linear-gradient(180deg, hsl(222 47% 11% / 0.98), hsl(222 47% 11% / 0.88));
+     padding-top: 2px;
+     padding-bottom: 10px;
+     border-bottom: 1px solid hsl(217 32% 25% / 0.55);
    }
 
    .nav-left,
@@ -479,7 +430,32 @@
    .nav-pill {
      width: 100%;
      justify-content: flex-start;
-     flex-wrap: wrap;
+     flex-direction: column;
+     align-items: stretch;
+     gap: 10px;
+     padding: 6px 0 0;
+     border-radius: 0;
+     background: transparent;
+     border: 0;
+     box-shadow: none;
+   }
+
+   .nav-pill .nav-link {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     gap: 12px;
+     padding: 12px 12px;
+     border-radius: 16px;
+     border: 1px solid hsl(217 32% 25% / 0.55);
+     background: linear-gradient(180deg, #ffffff08, #ffffff05);
+     box-shadow: inset 0 1px 0 #ffffff12;
+   }
+
+   .nav-pill .nav-link:hover {
+     transform: none;
+     background: color-mix(in srgb, hsl(222 47% 11%) 82%, transparent);
+     border-color: hsl(217 91% 60% / 0.35);
    }
 
    .nav-actions {
@@ -487,6 +463,9 @@
      margin-left: 0;
      flex-direction: column;
      align-items: stretch;
+     margin-top: auto;
+     padding-top: 12px;
+     border-top: 1px solid hsl(217 32% 25% / 0.55);
    }
 
    .header-cta-primary {
@@ -495,6 +474,7 @@
 
    .nav-link {
      width: 100%;
+     border-radius: 0;
    }
  }
 

@@ -58,7 +58,13 @@
   min-height: 100svh;
   display: flex;
   flex-direction: column;
+  overflow-x: clip;
   box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  overflow-x: clip;
 }
 
 body {

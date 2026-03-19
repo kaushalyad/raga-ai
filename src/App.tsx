@@ -21,6 +21,15 @@ const Header: React.FC = () => {
   const user = useAppSelector((s) => s.auth.user);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  React.useEffect(() => {
+    if (!menuOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [menuOpen]);
+
   const userLabel = (() => {
     const name = user?.displayName?.trim();
     if (name) return name;
@@ -37,6 +46,11 @@ const Header: React.FC = () => {
 
   return (
     <header className="header">
+      <div
+        className={menuOpen ? "mobile-backdrop mobile-backdrop-open" : "mobile-backdrop"}
+        onClick={() => setMenuOpen(false)}
+        aria-hidden="true"
+      />
       <nav className={menuOpen ? "nav nav-open" : "nav"}>
         <div className="nav-top">
           <NavLink className="brand" to="/" onClick={() => setMenuOpen(false)}>
@@ -58,6 +72,17 @@ const Header: React.FC = () => {
         </div>
 
         <div id="app-nav" className="nav-menu">
+          <div className="mobile-drawer-head">
+            <div className="mobile-drawer-title">Menu</div>
+            <button
+              className="mobile-drawer-close"
+              type="button"
+              aria-label="Close menu"
+              onClick={() => setMenuOpen(false)}
+            >
+              ×
+            </button>
+          </div>
           <div className="nav-center" aria-label="Primary navigation">
             <div className="nav-pill">
               <NavLink
